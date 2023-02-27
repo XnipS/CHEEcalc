@@ -7,5 +7,5 @@ class heatTransfer {
  private:
   static float SimpleConduction(float k, float A, float deltaT, float deltaX);
   static float Convection(float h, float A, float Ts, float Tinf);
-  static float Radiation(float epsilon, float sigma, float A, float Ts);
+  static float Radiation(float epsilon, float A, float Ts);
 };

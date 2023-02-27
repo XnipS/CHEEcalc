@@ -7,8 +7,8 @@ float heatTransfer::SimpleConduction(float k, float A, float deltaT,
 float heatTransfer::Convection(float h, float A, float Ts, float Tinf) {
   return h * A * (Ts - Tinf);
 };
-float heatTransfer::Radiation(float epsilon, float sigma, float A, float Ts) {
-  return epsilon * sigma * A * pow(Ts, 4);
+float heatTransfer::Radiation(float epsilon, float A, float Ts) {
+  return epsilon * StefanBoltzmannConst * A * pow(Ts, 4);
 };
 
 void heatTransfer::Interface() {
@@ -57,19 +57,16 @@ void heatTransfer::Interface() {
       Print(" W");
     } else if (userInput == 3) {
       Print("Please enter variables: ");
-      float variables[4];
+      float variables[3];
 
       Print("epsilon (unitless): ");
       std::cin >> variables[0];
-      Print("sigma (W m-2 K-4): ");
-      std::cin >> variables[1];
       Print("A (m2): ");
-      std::cin >> variables[2];
+      std::cin >> variables[1];
       Print("Ts (K): ");
-      std::cin >> variables[3];
+      std::cin >> variables[2];
 
-      Print(Radiation(variables[0], variables[1], variables[2], variables[3]),
-            true);
+      Print(Radiation(variables[0], variables[1], variables[2]), true);
       Print(" W");
     } else {
       Print("Unknown command.");
