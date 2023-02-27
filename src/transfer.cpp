@@ -1,7 +1,5 @@
 #include "../include/transfer.h"
 
-#include <cmath>
-
 float heatTransfer::SimpleConduction(float k, float A, float deltaT,
                                      float deltaX) {
   return -k * A * (deltaT / deltaX);
@@ -22,7 +20,7 @@ void heatTransfer::Interface() {
     std::cin >> userInput;
 
     if (userInput == 0) {
-      Print("break!");
+      Print("Module Exit!");
       break;
     } else if (userInput == 1) {
       Print("Please enter variables: ");
@@ -42,9 +40,37 @@ void heatTransfer::Interface() {
             true);
       Print(" W");
     } else if (userInput == 2) {
-      heatTransfer::Interface();
+      Print("Please enter variables: ");
+      float variables[4];
+
+      Print("h (W m-2 K-1): ");
+      std::cin >> variables[0];
+      Print("A (m2): ");
+      std::cin >> variables[1];
+      Print("Ts (K): ");
+      std::cin >> variables[2];
+      Print("Tinf (K): ");
+      std::cin >> variables[3];
+
+      Print(Convection(variables[0], variables[1], variables[2], variables[3]),
+            true);
+      Print(" W");
     } else if (userInput == 3) {
-      heatTransfer::Interface();
+      Print("Please enter variables: ");
+      float variables[4];
+
+      Print("epsilon (unitless): ");
+      std::cin >> variables[0];
+      Print("sigma (W m-2 K-4): ");
+      std::cin >> variables[1];
+      Print("A (m2): ");
+      std::cin >> variables[2];
+      Print("Ts (K): ");
+      std::cin >> variables[3];
+
+      Print(Radiation(variables[0], variables[1], variables[2], variables[3]),
+            true);
+      Print(" W");
     } else {
       Print("Unknown command.");
     }

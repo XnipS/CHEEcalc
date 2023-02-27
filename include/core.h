@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 #include <iostream>
 #include <string>
 #define NIP_BigLine                                                            \
